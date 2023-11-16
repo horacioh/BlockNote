@@ -1,6 +1,6 @@
-import { ActionIcon, Button } from "@mantine/core";
+import * as Ariakit from "@ariakit/react";
 import Tippy from "@tippyjs/react";
-import { ForwardedRef, forwardRef, MouseEvent } from "react";
+import { ForwardedRef, forwardRef, MouseEvent, useMemo } from "react";
 import { TooltipContent } from "../../Tooltip/components/TooltipContent";
 import { IconType } from "react-icons";
 
@@ -20,6 +20,34 @@ export type ToolbarButtonProps = {
 export const ToolbarButton = forwardRef(
   (props: ToolbarButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const ButtonIcon = props.icon;
+    const content = props.children ? (
+      props.children
+    ) : ButtonIcon ? (
+      <ButtonIcon size={16} />
+    ) : undefined;
+    return (
+      <Ariakit.TooltipProvider>
+        <Ariakit.TooltipAnchor>
+          <Ariakit.Button
+            data-selected={props.isSelected ? "true" : undefined}
+            className="bn-toolbar-button"
+            onClick={props.onClick}
+            data-test={
+              props.mainTooltip.slice(0, 1).toLowerCase() +
+              props.mainTooltip.replace(/\s+/g, "").slice(1)
+            }
+            disabled={props.isDisabled || false}>
+            {content}
+          </Ariakit.Button>
+        </Ariakit.TooltipAnchor>
+        <Ariakit.Tooltip>
+          <TooltipContent
+            mainTooltip={props.mainTooltip}
+            secondaryTooltip={props.secondaryTooltip}
+          />
+        </Ariakit.Tooltip>
+      </Ariakit.TooltipProvider>
+    );
     return (
       <Tippy
         content={
@@ -41,7 +69,7 @@ export const ToolbarButton = forwardRef(
             size={"xs"}
             disabled={props.isDisabled || false}
             ref={ref}>
-            {ButtonIcon && <ButtonIcon />}
+            {ButtonIcon && <ButtonIcon size={16} />}
             {props.children}
           </Button>
         ) : (
