@@ -18,11 +18,12 @@ export const ColorIcon = (
   return (
     <Box
       className={classes.root}
-      sx={(theme) => {
+      sx={() => {
         return {
           pointerEvents: "none",
-          backgroundColor: theme.other.backgroundColors[backgroundColor],
-          color: theme.other.textColors[textColor],
+          // TODO: update this with the correct colors
+          backgroundColor: "white",
+          color: "black",
           fontSize: (size * 0.75).toString() + "px",
           height: size.toString() + "px",
           lineHeight: size.toString() + "px",
