@@ -17,3 +17,30 @@
 ## General codebase notes
 
 - there's a pattern in the `ToolbarInputDropdownButton` component that renders inside a `Tippy` component either the first or the second child that we might need to change. this is basically nested dialogs or layers. Ariakit has good support for a usecase like this (or even we can use the submenu behavior)
+
+## TODO
+
+- [ ] remove CSS Modules
+  - [ ] editor.module.css
+  - [ ] App.module.css
+  - [ ] editor.module.css packages/core
+  - [ ] Block.module.css packages/core
+  - [ ] Editor.module.css tests/utils/components
+  - [ ] TextArea.module.css tests/utils/components
+- [ ] Components
+  - [ ] Toolbar (BlockType select)
+    - [x] ToolbarButton
+    - [x] ToolbarSelect (blocktype)
+      - [ ] update font family
+    - [ ] Toolbar Color Picker
+    - [ ] Toolbar Link
+    - [ ] ToolbarInputDropdown
+  - [ ] Tooltip
+  - [ ] SideMenu
+    - [ ] SideMenuButton
+  - [ ] DragHandle
+    - [ ] DragHandleMenu
+  - [ ] BlockColorsButton
+  - [ ] SlashMenu
+    - [ ] DefaultSlashMenu
+    - [ ] SlashMenuItem
