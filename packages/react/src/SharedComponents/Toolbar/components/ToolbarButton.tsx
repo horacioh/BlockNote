@@ -1,8 +1,8 @@
 import * as Ariakit from "@ariakit/react";
 import Tippy from "@tippyjs/react";
-import { ForwardedRef, forwardRef, MouseEvent, useMemo } from "react";
-import { TooltipContent } from "../../Tooltip/components/TooltipContent";
+import { ForwardedRef, forwardRef, MouseEvent } from "react";
 import { IconType } from "react-icons";
+import { TooltipContent } from "../../Tooltip/components/TooltipContent";
 
 export type ToolbarButtonProps = {
   onClick?: (e: MouseEvent) => void;

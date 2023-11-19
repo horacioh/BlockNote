@@ -5,7 +5,6 @@ export * from "./defaultThemes";
 
 export * from "./FormattingToolbar/components/FormattingToolbarPositioner";
 export * from "./FormattingToolbar/components/DefaultFormattingToolbar";
-export * from "./FormattingToolbar/components/DefaultDropdowns/BlockTypeDropdown";
 export * from "./FormattingToolbar/components/DefaultButtons/ColorStyleButton";
 export * from "./FormattingToolbar/components/DefaultButtons/CreateLinkButton";
 export * from "./FormattingToolbar/components/DefaultButtons/NestBlockButtons";
@@ -38,7 +37,6 @@ export * from "./ImageToolbar/components/DefaultImageToolbar";
 
 export * from "./SharedComponents/Toolbar/components/Toolbar";
 export * from "./SharedComponents/Toolbar/components/ToolbarButton";
-export * from "./SharedComponents/Toolbar/components/ToolbarDropdown";
 
 export * from "./hooks/useBlockNote";
 export * from "./hooks/useEditorForceUpdate";

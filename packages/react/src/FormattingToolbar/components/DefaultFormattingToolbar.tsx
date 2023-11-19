@@ -1,5 +1,5 @@
 import { BlockSchema } from "@blocknote/core";
-
+import * as Ariakit from "@ariakit/react";
 import { FormattingToolbarProps } from "./FormattingToolbarPositioner";
 import { Toolbar } from "../../SharedComponents/Toolbar/components/Toolbar";
 import {
@@ -16,15 +16,20 @@ import {
 import { CreateLinkButton } from "./DefaultButtons/CreateLinkButton";
 import { ReplaceImageButton } from "./DefaultButtons/ReplaceImageButton";
 import { ImageCaptionButton } from "./DefaultButtons/ImageCaptionButton";
+import {
+  BlockTypeSelect,
+  BlockTypeSelectItem,
+} from "./DefaultSelects/BlockTypeSelect";
 
 export const DefaultFormattingToolbar = <BSchema extends BlockSchema>(
   props: FormattingToolbarProps<BSchema> & {
-    blockTypeDropdownItems?: BlockTypeDropdownItem[];
+    blockTypeSelectItems?: Array<BlockTypeSelectItem>;
   }
 ) => {
   return (
     <Toolbar>
-      <BlockTypeDropdown {...props} items={props.blockTypeDropdownItems} />
+      <BlockTypeSelect {...props} items={props.blockTypeSelectItems} />
+      {/* <BlockTypeDropdown {...props} items={props.blockTypeSelectItems} /> */}
 
       <ImageCaptionButton editor={props.editor} />
       <ReplaceImageButton editor={props.editor} />

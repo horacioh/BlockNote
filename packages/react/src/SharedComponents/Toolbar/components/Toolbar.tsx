@@ -1,6 +1,6 @@
-import { Toolbar as AKToolbar, TooltipProvider } from "@ariakit/react";
+import { Toolbar as AKToolbar } from "@ariakit/react";
 import { mergeCSSClasses } from "@blocknote/core";
-import { forwardRef, HTMLAttributes, useMemo } from "react";
+import { HTMLAttributes, forwardRef, useMemo } from "react";
 import "./toolbar.css";
 
 export const Toolbar = forwardRef<
@@ -8,7 +8,10 @@ export const Toolbar = forwardRef<
   HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
   const className = useMemo(
-    () => mergeCSSClasses("bn-toolbar", props.className),
+    () =>
+      props.className
+        ? mergeCSSClasses("bn-toolbar", props.className)
+        : "bn-toolbar",
     [props.className]
   );
   return (
