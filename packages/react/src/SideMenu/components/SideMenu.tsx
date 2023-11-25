@@ -1,5 +1,6 @@
 import { createStyles, Group } from "@mantine/core";
 import { ReactNode } from "react";
+import "./sidemenu.css";
 
 export const SideMenu = (props: { children: ReactNode }) => {
   const { classes } = createStyles({ root: {} })(undefined, {

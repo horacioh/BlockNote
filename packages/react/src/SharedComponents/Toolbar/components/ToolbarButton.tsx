@@ -30,7 +30,7 @@ export const ToolbarButton = forwardRef(
         <Ariakit.TooltipAnchor>
           <Ariakit.Button
             data-selected={props.isSelected ? "true" : undefined}
-            className="bn-toolbar-button"
+            className="bn-button bn-toolbar-button"
             onClick={props.onClick}
             data-test={
               props.mainTooltip.slice(0, 1).toLowerCase() +
@@ -40,12 +40,11 @@ export const ToolbarButton = forwardRef(
             {content}
           </Ariakit.Button>
         </Ariakit.TooltipAnchor>
-        <Ariakit.Tooltip>
-          <TooltipContent
-            mainTooltip={props.mainTooltip}
-            secondaryTooltip={props.secondaryTooltip}
-          />
-        </Ariakit.Tooltip>
+
+        <TooltipContent
+          mainTooltip={props.mainTooltip}
+          secondaryTooltip={props.secondaryTooltip}
+        />
       </Ariakit.TooltipProvider>
     );
     return (

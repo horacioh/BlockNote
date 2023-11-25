@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { createStyles, Menu } from "@mantine/core";
+import * as Ariakit from "@ariakit/react";
 import { Block, BlockNoteEditor, BlockSchema } from "@blocknote/core";
 
 export type DragHandleMenuProps<BSchema extends BlockSchema> = {
@@ -8,13 +8,9 @@ export type DragHandleMenuProps<BSchema extends BlockSchema> = {
 };
 
 export const DragHandleMenu = (props: { children: ReactNode }) => {
-  const { classes } = createStyles({ root: {} })(undefined, {
-    name: "DragHandleMenu",
-  });
-
   return (
-    <Menu.Dropdown className={classes.root} style={{ overflow: "visible" }}>
+    <Ariakit.Menu style={{ overflow: "visible" }}>
       {props.children}
-    </Menu.Dropdown>
+    </Ariakit.Menu>
   );
 };

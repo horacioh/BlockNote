@@ -19,7 +19,7 @@ export function ToolbarSelect({ items, ...props }: ToolbarSelectProps) {
     <Ariakit.SelectProvider value={selectedItem.value}>
       <Ariakit.Select
         {...props}
-        className="bn-toolbar-button"
+        className="bn-button bn-toolbar-button"
         render={<Ariakit.ToolbarItem />}>
         {selectedItem.text}
         <Ariakit.SelectArrow />

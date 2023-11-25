@@ -34,7 +34,7 @@
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
-.bn-toolbar-button {
+.bn-button {
   --border: rgba(0, 0, 0, 0.1);
   --highlight: rgba(255, 255, 255, 0.2);
   --shadow: rgba(0, 0, 0, 0.1);
@@ -82,69 +82,69 @@
   box-shadow: none;
 }
 
-.bn-toolbar-button:hover {
+.bn-button:hover {
   background-color: hsl(204 10% 10% / 0.05);
 }
 
-:is(.dark .bn-toolbar-button):hover {
+:is(.dark .bn-button):hover {
   background-color: hsl(204 20% 100% / 0.1);
   /* background-color: hsl(204 20% 100% / 0.05); */
 }
 
-.bn-toolbar-button[aria-disabled="true"] {
+.bn-button[aria-disabled="true"] {
   opacity: 0.5;
 }
 
-.bn-toolbar-button[aria-expanded="true"] {
+.bn-button[aria-expanded="true"] {
   background-color: hsl(204 20% 96%);
 }
 
-.bn-toolbar-button[data-focus-visible] {
+.bn-button[data-focus-visible] {
   outline-style: solid;
 }
 
-.bn-toolbar-button:active,
-.bn-toolbar-button[data-active] {
+.bn-button:active,
+.bn-button[data-active] {
   /* this makes the button to jump. doenst feel right */
   /* padding-top: 0.125rem; */
   box-shadow: inset 0 0 0 1px var(--border), inset 0 2px 0 var(--border);
 }
 
-.bn-toolbar-button[data-selected] {
+.bn-button[data-selected] {
   --fg-color: hsl(204 20% 100%);
   --bg-color: hsl(204 3% 18%);
 }
 
-:is(.dark .bn-toolbar-button)[data-selected] {
+:is(.dark .bn-button)[data-selected] {
   --bg-color: hsl(204 20% 100%);
   --fg-color: hsl(204 3% 18%);
   background-color: var(--bg-color);
   color: currentColor;
 }
 
-.bn-toolbar-button[data-selected]:hover {
+.bn-button[data-selected]:hover {
   --bg-color: hsl(204 3% 28%);
   background-color: var(--bg-color);
 }
 
-:is(.dark .bn-toolbar-button)[data-selected]:hover {
+:is(.dark .bn-button)[data-selected]:hover {
   --bg-color: hsl(204 20% 100%);
   --fg-color: hsl(204 3% 18%);
   background-color: var(--bg-color);
 }
 
-:is(.dark .bn-toolbar-button)[aria-expanded="true"] {
+:is(.dark .bn-button)[aria-expanded="true"] {
   background-color: hsl(204 20% 100% / 0.1);
 }
 
-:is(.dark .bn-toolbar-button:active),
-:is(.dark .bn-toolbar-button[data-active]) {
+:is(.dark .bn-button:active),
+:is(.dark .bn-button[data-active]) {
   /* box-shadow: inset 0 0 0 1px var(--border), inset 0 1px 1px 1px var(--shadow); */
   box-shadow: none;
 }
 
 @media (min-width: 640px) {
-  .bn-toolbar-button {
+  .bn-button {
     gap: 0.5rem;
   }
 }

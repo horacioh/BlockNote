@@ -1,4 +1,4 @@
-import { Menu } from "@mantine/core";
+import * as Ariakit from "@ariakit/react";
 import { SideMenuButton } from "../SideMenuButton";
 import { MdDragIndicator } from "react-icons/md";
 import { SideMenuProps } from "../SideMenuPositioner";
@@ -9,25 +9,29 @@ export const DragHandle = <BSchema extends BlockSchema>(
   props: SideMenuProps<BSchema>
 ) => {
   const DragHandleMenu = props.dragHandleMenu || DefaultDragHandleMenu;
+  const menu = Ariakit.useMenuStore();
 
   return (
-    <Menu
-      trigger={"click"}
-      onOpen={props.freezeMenu}
-      onClose={props.unfreezeMenu}
-      width={100}
-      position={"left"}>
-      <Menu.Target>
-        <div
+    <Ariakit.MenuProvider
+      setOpen={(val) => {
+        if (val) {
+          props.freezeMenu();
+        } else {
+          props.unfreezeMenu();
+        }
+      }}
+      placement={"left"}>
+      <Ariakit.MenuButton className="bn-button">
+        {/* <div
           draggable="true"
           onDragStart={props.blockDragStart}
           onDragEnd={props.blockDragEnd}>
-          <SideMenuButton>
-            <MdDragIndicator size={24} data-test={"dragHandle"} />
-          </SideMenuButton>
-        </div>
-      </Menu.Target>
+          <SideMenuButton> */}
+        <MdDragIndicator size={24} data-test={"dragHandle"} />
+        {/* </SideMenuButton> */}
+        {/* </div> */}
+      </Ariakit.MenuButton>
       <DragHandleMenu editor={props.editor} block={props.block} />
-    </Menu>
+    </Ariakit.MenuProvider>
   );
 };

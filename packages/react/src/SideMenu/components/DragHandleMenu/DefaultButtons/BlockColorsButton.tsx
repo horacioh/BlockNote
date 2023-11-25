@@ -1,5 +1,5 @@
+import * as Ariakit from "@ariakit/react";
 import { ReactNode, useCallback, useRef, useState } from "react";
-import { Box, Menu } from "@mantine/core";
 import { HiChevronRight } from "react-icons/hi";
 import { BlockSchema, PartialBlock } from "@blocknote/core";
 
@@ -47,52 +47,46 @@ export const BlockColorsButton = <BSchema extends BlockSchema>(
 
   return (
     <DragHandleMenuItem
+      {...props}
       onMouseLeave={startMenuCloseTimer}
       onMouseOver={stopMenuCloseTimer}>
-      <Menu opened={opened} position={"right"}>
-        <Menu.Target>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ flex: 1 }}>{props.children}</div>
-            <Box style={{ display: "flex", alignItems: "center" }}>
-              <HiChevronRight size={15} />
-            </Box>
-          </div>
-        </Menu.Target>
-        <div ref={ref}>
-          <Menu.Dropdown
-            onMouseLeave={startMenuCloseTimer}
-            onMouseOver={stopMenuCloseTimer}
-            style={{ marginLeft: "5px" }}>
-            <ColorPicker
-              iconSize={18}
-              text={
-                "textColor" in props.block.props &&
-                typeof props.block.props.textColor === "string"
-                  ? {
-                      color: props.block.props.textColor,
-                      setColor: (color) =>
-                        props.editor.updateBlock(props.block, {
-                          props: { textColor: color },
-                        } as PartialBlock<BSchema>),
-                    }
-                  : undefined
-              }
-              background={
-                "backgroundColor" in props.block.props &&
-                typeof props.block.props.backgroundColor === "string"
-                  ? {
-                      color: props.block.props.backgroundColor,
-                      setColor: (color) =>
-                        props.editor.updateBlock(props.block, {
-                          props: { backgroundColor: color },
-                        } as PartialBlock<BSchema>),
-                    }
-                  : undefined
-              }
-            />
-          </Menu.Dropdown>
-        </div>
-      </Menu>
+      <Ariakit.MenuProvider placement="right" open={opened}>
+        <Ariakit.MenuButton>
+          {props.children} <HiChevronRight size={15} />
+        </Ariakit.MenuButton>
+        <Ariakit.Menu
+          ref={ref}
+          onMouseLeave={startMenuCloseTimer}
+          onMouseOver={stopMenuCloseTimer}>
+          <ColorPicker
+            iconSize={18}
+            text={
+              "textColor" in props.block.props &&
+              typeof props.block.props.textColor === "string"
+                ? {
+                    color: props.block.props.textColor,
+                    setColor: (color) =>
+                      props.editor.updateBlock(props.block, {
+                        props: { textColor: color },
+                      } as PartialBlock<BSchema>),
+                  }
+                : undefined
+            }
+            background={
+              "backgroundColor" in props.block.props &&
+              typeof props.block.props.backgroundColor === "string"
+                ? {
+                    color: props.block.props.backgroundColor,
+                    setColor: (color) =>
+                      props.editor.updateBlock(props.block, {
+                        props: { backgroundColor: color },
+                      } as PartialBlock<BSchema>),
+                  }
+                : undefined
+            }
+          />
+        </Ariakit.Menu>
+      </Ariakit.MenuProvider>
     </DragHandleMenuItem>
   );
 };

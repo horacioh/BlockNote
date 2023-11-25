@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { Menu } from "@mantine/core";
+import * as Ariakit from "@ariakit/react";
 import { BlockNoteEditor, BlockSchema } from "@blocknote/core";
 
 import { ToolbarButton } from "../../../SharedComponents/Toolbar/components/ToolbarButton";
@@ -65,33 +65,27 @@ export const ColorStyleButton = <BSchema extends BlockSchema>(props: {
   }
 
   return (
-    <Menu onOpen={updateMaxHeight}>
-      <Menu.Target>
-        <ToolbarButton
-          mainTooltip={"Colors"}
-          icon={() => (
-            <ColorIcon
-              textColor={currentTextColor}
-              backgroundColor={currentBackgroundColor}
-              size={20}
-            />
-          )}
+    <Ariakit.MenuProvider>
+      <Ariakit.MenuButton className="bn-button bn-toolbar-button">
+        <ColorIcon
+          textColor={currentTextColor}
+          backgroundColor={currentBackgroundColor}
+          size={20}
         />
-      </Menu.Target>
-      <div ref={ref}>
-        <Menu.Dropdown>
-          <ColorPicker
-            text={{
-              color: currentTextColor,
-              setColor: setTextColor,
-            }}
-            background={{
-              color: currentBackgroundColor,
-              setColor: setBackgroundColor,
-            }}
-          />
-        </Menu.Dropdown>
-      </div>
-    </Menu>
+      </Ariakit.MenuButton>
+
+      <Ariakit.Menu ref={ref}>
+        <ColorPicker
+          text={{
+            color: currentTextColor,
+            setColor: setTextColor,
+          }}
+          background={{
+            color: currentBackgroundColor,
+            setColor: setBackgroundColor,
+          }}
+        />
+      </Ariakit.Menu>
+    </Ariakit.MenuProvider>
   );
 };

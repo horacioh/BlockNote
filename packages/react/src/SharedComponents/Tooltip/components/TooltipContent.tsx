@@ -1,19 +1,16 @@
-import { createStyles, Stack, Text } from "@mantine/core";
+import * as Ariakit from "@ariakit/react";
+import "./tooltip.css";
 
 export const TooltipContent = (props: {
   mainTooltip: string;
   secondaryTooltip?: string;
 }) => {
-  const { classes } = createStyles({ root: {} })(undefined, {
-    name: "Tooltip",
-  });
-
   return (
-    <Stack spacing={0} className={classes.root}>
-      <Text size={"sm"}>{props.mainTooltip}</Text>
+    <Ariakit.Tooltip>
+      <span className="bn-tooltip-primary">{props.mainTooltip}</span>
       {props.secondaryTooltip && (
-        <Text size={"xs"}>{props.secondaryTooltip}</Text>
+        <span className="bn-tooltip-secondary">{props.secondaryTooltip}</span>
       )}
-    </Stack>
+    </Ariakit.Tooltip>
   );
 };

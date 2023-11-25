@@ -6,11 +6,7 @@ import { BlockSchema } from "@blocknote/core";
 export const AddBlockButton = <BSchema extends BlockSchema>(
   props: SideMenuProps<BSchema>
 ) => (
-  <SideMenuButton>
-    <AiOutlinePlus
-      size={24}
-      onClick={props.addBlock}
-      data-test={"dragHandleAdd"}
-    />
+  <SideMenuButton onClick={props.addBlock} data-test={"dragHandleAdd"}>
+    <AiOutlinePlus size={24} />
   </SideMenuButton>
 );
